@@ -1,0 +1,14 @@
+<form method="POST"></form>
+    {%csrf_token%}
+    <label for="titulo">Titulo</label>
+    <input type="text" id="titulo" name="titulo" required>
+
+    <label for="autor">Autor</label>
+    <input type="text" name="autor" id="autor" required>
+
+    <label for="genero">Genero</label>
+    <input type="text" name="genero" id="genero">
+
+
+    <button type="submit">Agregar</button>
+</form>
