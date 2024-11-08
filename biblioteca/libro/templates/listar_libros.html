@@ -1,7 +1,13 @@
 <h1>Lista de libros</h1>
+<a href="{% url 'crear_libro' %}">Crear nuevo libro</a>
 <ul>
     {% for libro in page_obj %}
-        <li>{{ libro.titulo }} - {{ libro.autor }} (Publicado: {{ libro.publicado }})</li>
+        <li>
+            {{ libro.titulo }} - {{ libro.autor }} 
+            <a href="{% url 'editar_libro' libro.id %}">Editar</a> |
+            <a href="{% url 'eliminar_libro' libro.id %}">Eliminar</a> |
+            <a href="{% url 'detalle_libro' libro.id %}">Ver detalles</a>
+        </li>
     {% empty %}
         <li>No tienes libros registrados.</li>
     {% endfor %}
@@ -13,11 +19,9 @@
             <a href="?page=1">&laquo; first</a>
             <a href="?page={{ page_obj.previous_page_number }}">previous</a>
         {% endif %}
-
         <span class="current">
             Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
         </span>
-
         {% if page_obj.has_next %}
             <a href="?page={{ page_obj.next_page_number }}">next</a>
             <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>

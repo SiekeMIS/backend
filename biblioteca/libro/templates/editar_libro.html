@@ -1,7 +1,7 @@
-<h1>Crear un nuevo libro</h1>
+<h1>Editar libro: {{ libro.titulo }}</h1>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Guardar libro</button>
+    <button type="submit">Actualizar libro</button>
 </form>
 <a href="{% url 'listar_libros' %}">Volver a la lista</a>

@@ -18,6 +18,9 @@ from django.contrib import admin
 from django.urls import path
 from libro import views
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.crear_libros, name='crear_libros')
+    path('libros/', views.listar_libros, name='listar_libros'),
+    path('libros/crear/', views.crear_libro, name='crear_libro'),
+    path('libros/<int:libro_id>/editar/', views.editar_libro, name='editar_libro'),
+    path('libros/<int:libro_id>/eliminar/', views.eliminar_libro, name='eliminar_libro'),
+    path('libros/<int:libro_id>/', views.detalle_libro, name='detalle_libro')
 ]
