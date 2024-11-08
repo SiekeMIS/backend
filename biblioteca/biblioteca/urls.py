@@ -17,10 +17,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from libro import views
+from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('libros/', views.listar_libros, name='listar_libros'),
-    path('libros/crear/', views.crear_libro, name='crear_libro'),
+    path('', views.crear_libro, name='crear_libro'),
     path('libros/<int:libro_id>/editar/', views.editar_libro, name='editar_libro'),
     path('libros/<int:libro_id>/eliminar/', views.eliminar_libro, name='eliminar_libro'),
-    path('libros/<int:libro_id>/', views.detalle_libro, name='detalle_libro')
+    path('libros/<int:libro_id>/', views.detalle_libro, name='detalle_libro'),
+    # Aquí añadimos las rutas para login y logout
+    path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
+    #path('accounts/logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
+
+    # Incluye las rutas de tu aplicación si están en un archivo urls.py separado
+    #path('', include('tu_aplicacion.urls')),  # Asegúrate de incluir tu app aquí
 ]
