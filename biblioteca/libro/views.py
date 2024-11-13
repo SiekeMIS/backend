@@ -50,8 +50,3 @@ def eliminar_libro(request, libro_id):
         libro.delete()
         return redirect('listar_libros')
     return render(request, 'eliminar_libro.html', {'libro': libro})
-
-# Detalles del libro (opcional)
-def detalle_libro(request, libro_id):
-    libro = get_object_or_404(Libro, id=libro_id, usuario=request.user)
-    return render(request, 'detalle_libro.html', {'libro': libro})
